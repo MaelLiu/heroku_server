@@ -69,21 +69,21 @@ app.post('/remove', async (req ,res) =>{
 });
 
 
-app.get('/', async (req, res) => {
-    let data = {
-        coralLabel:2,
-        coralType:"finger",
-        coralPosition:"a5",
-        coralPutDate:Date.now(),
-        coralRecoveryDays:4,
-        coralBelong:"owen",
-        coralStatus:"inside",
-    };
-    let test = new TestModels(data);
-    await test.save();
-    res.send("added");
+// app.get('/', async (req, res) => {
+//     let data = {
+//         coralLabel:2,
+//         coralType:"finger",
+//         coralPosition:"a5",
+//         coralPutDate:Date.now(),
+//         coralRecoveryDays:4,
+//         coralBelong:"owen",
+//         coralStatus:"inside",
+//     };
+//     let test = new TestModels(data);
+//     await test.save();
+//     res.send("added");
 
-});
+// });
 
 app.listen(process.env.PORT || 3001, ()=>{
     console.log("server running on port 3001...");
