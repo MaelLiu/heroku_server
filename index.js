@@ -18,7 +18,8 @@ app.get('/find', async (req, res) => {
     if (req_query.type){find_filter.coralType = req_query.type;}
     if (req_query.pos){find_filter.coralPosition = req_query.pos;}
     if (req_query.belong){find_filter.coralBelong = req_query.belong;}
-    find_filter.coralStatus = "inside";
+    if (req_query.showRemoved){find_filter.coralStatus = "removed";}
+    else{find_filter.coralStatus = "inside";}
     let finding = await TestModels.find(find_filter);
     try {
         if (!finding.length){
