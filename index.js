@@ -62,7 +62,10 @@ app.post('/remove', async (req ,res) =>{
     remove_filter.coralStatus = "inside";
     // console.log(remove_filter);
     let removeCoral = await TestModels.findOneAndUpdate(
-        remove_filter, {coralStatus: "removed"});
+        remove_filter, {
+            coralStatus: "removed",
+            coralRemoveDate: Date.now(),
+        });
     // console.log(removeCoral);
     if (removeCoral){res.send("coral removed");}
     else{res.send("no coral removed");}

@@ -29,6 +29,10 @@ const testSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    coralRemoveDate:{
+        type: Date,
+        required: false,
+    }
 });
 
 const Test = mongoose.model("Test", testSchema);
