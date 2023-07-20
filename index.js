@@ -1,9 +1,15 @@
 const express = require('express');
+const fs = require('fs');
+const multer = require('multer');
 const mongoose = require('mongoose');
 const TestModels = require('./db/Test');
 const cors = require('cors');
 const app = express();
+const upload = multer();
+
 const dbConnect = require("./db/dbConnection");
+
+const githubToken = "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";
 
 dbConnect();
 
@@ -73,7 +79,6 @@ app.post('/remove', async (req ,res) =>{
     if (removeCoral){res.send("coral removed");}
     else{res.send("no coral removed");}
 });
-
 
 // app.get('/', async (req, res) => {
 //     let data = {
