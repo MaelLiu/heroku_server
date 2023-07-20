@@ -47,7 +47,9 @@ app.post('/add', async (req, res) => {
     // console.log(addNewCoral);
     try {
         await addNewCoral.save();
-        res.send("coral added");   
+        let report = `coral #: ${newCoralData.coralLabel} is added`;
+        res.send(report);
+        console.log(`coral #: ${newCoralData.coralLabel} is added`);   
         // console.log("add one coral in");
     } catch (error) {
         res.send("not found any matched data");
