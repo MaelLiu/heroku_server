@@ -78,7 +78,7 @@ app.post('/remove', async (req ,res) =>{
     else{res.send("no coral removed");}
 });
 
-app.get('/image', async (req, res) => {
+app.post('/image', async (req, res) => {
     let req_query = req.query;
     let find_filter = {};
     find_filter.coralLabel = req_query.label;
