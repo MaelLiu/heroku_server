@@ -84,7 +84,7 @@ app.get('/image', async (req, res) => {
     find_filter.coralLabel = req_query.label;
     let addImage = await TestModels.findOneAndUpdate(
         find_filter, {
-            coralImageUrl: req_query.url.subtring(req_query.url.indexOf("url")+4,),
+            coralImageUrl: req.params.subtring(req_query.url.indexOf("url")+4,),
         }
     );
     if (addImage){res.send("coral image added");}
