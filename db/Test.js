@@ -32,6 +32,10 @@ const testSchema = new mongoose.Schema({
     coralRemoveDate:{
         type: Date,
         required: false,
+    },
+    coralImageUrl:{
+        type:String,
+        required:false,
     }
 });
 

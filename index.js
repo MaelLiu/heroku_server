@@ -9,8 +9,6 @@ const upload = multer();
 
 const dbConnect = require("./db/dbConnection");
 
-const githubToken = "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";
-
 dbConnect();
 
 app.use(express.json());
@@ -80,6 +78,18 @@ app.post('/remove', async (req ,res) =>{
     else{res.send("no coral removed");}
 });
 
+app.get('/image', async (req, res) => {
+    let req_query = req.query;
+    let find_filter = {};
+    find_filter.coralLabel = req_query.label;
+    let addImage = await TestModels.findOneAndUpdate(
+        find_filter, {
+            coralImageUrl: req.url,
+        }
+    );
+    if (addImage){res.send("coral image added");}
+    else{res.send("coral image added failed");}
+});
 // app.get('/', async (req, res) => {
 //     let data = {
 //         coralLabel:2,
