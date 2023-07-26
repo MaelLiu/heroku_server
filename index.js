@@ -79,12 +79,12 @@ app.post('/remove', async (req ,res) =>{
 });
 
 app.post('/image', async (req, res) => {
-    let req_query = req.query;
+    let req_body= req.body;
     let find_filter = {};
-    find_filter.coralLabel = req_query.label;
+    find_filter.coralLabel = req_body.coralLabel;
     let addImage = await TestModels.findOneAndUpdate(
         find_filter, {
-            coralImageUrl: req.params.subtring(req_query.url.indexOf("url")+4,),
+            coralImageUrl: "https://" + req_body.coralImageUrl,
         }
     );
     if (addImage){res.send("coral image added");}
