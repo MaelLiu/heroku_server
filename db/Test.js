@@ -34,7 +34,7 @@ const testSchema = new mongoose.Schema({
         required: false,
     },
     coralImageUrl:{
-        type:String,
+        type:[String],
         required:false,
     }
 });

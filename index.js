@@ -82,12 +82,15 @@ app.post('/image', async (req, res) => {
     let req_body= req.body;
     let find_filter = {};
     find_filter.coralLabel = req_body.coralLabel;
-    let addImage = await TestModels.findOneAndUpdate(
-        find_filter, {
-            coralImageUrl: "https://" + req_body.coralImageUrl,
+    let addImage = await TestModels.findOne(find_filter);
+    if (addImage){
+        if (!addImage.coralImageUrl){
+            addImage.coralImageUrl = [];
         }
-    );
-    if (addImage){res.send("coral image added");}
+        addImage.coralImageUrl.push("https://" + req_body.coralImageUrl);
+        await addImage.save();
+        res.send("coral image added");
+    }
     else{res.send("coral image added failed");}
 });
 // app.get('/', async (req, res) => {
