@@ -1,11 +1,9 @@
 const express = require('express');
-const fs = require('fs');
 const multer = require('multer');
 const mongoose = require('mongoose');
 const TestModels = require('./db/Test');
 const cors = require('cors');
 const app = express();
-const upload = multer();
 
 const dbConnect = require("./db/dbConnection");
 
@@ -14,7 +12,6 @@ dbConnect();
 app.use(express.json());
 app.use(cors());
 
-//nothing more
 // req is in {target: value}
 app.get('/find', async (req, res) => {
     let req_query = req.query;
@@ -93,6 +90,7 @@ app.post('/image', async (req, res) => {
     }
     else{res.send("coral image added failed");}
 });
+
 // app.get('/', async (req, res) => {
 //     let data = {
 //         coralLabel:2,
@@ -110,5 +108,6 @@ app.post('/image', async (req, res) => {
 // });
 
 app.listen(process.env.PORT || 3001, ()=>{
+// app.listen(3001, ()=>{
     console.log("server running on port 3001...");
 });
