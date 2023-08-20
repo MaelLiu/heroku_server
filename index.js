@@ -19,15 +19,14 @@ app.get('/find', async (req, res) => {
     if (req_query.type){find_filter.coralType = req_query.type;}
     if (req_query.pos){find_filter.coralPosition = req_query.pos;}
     if (req_query.belong){find_filter.coralBelong = req_query.belong;}
-    if (req_query.showRemoved){find_filter.coralStatus = "removed";}
+    if (req_query.label){find_filter.coralLabel = Number(req_query.label);}
+    if (req_query.showRemoved === "true"){find_filter.coralStatus = "removed";}
+    else if (req_query.showRemoved === "all"){}
     else{find_filter.coralStatus = "inside";}
+    // console.log(find_filter);
     let finding = await TestModels.find(find_filter);
     try {
-        if (!finding.length){
-            // console.log("none");
-            res.json(finding);
-        }
-        else{res.json(finding);}
+        res.json(finding);
     } catch (error) {
         res.send(error);
     }
