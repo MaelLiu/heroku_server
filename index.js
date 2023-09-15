@@ -82,12 +82,22 @@ app.post('/remove', async (req ,res) =>{
     if (req_query.pos != ""){remove_filter.coralPosition = req_query.pos;}
     else{remove_filter.coralPosition = "notfound";}
     remove_filter.coralStatus = "inside";
-    // console.log(remove_filter);
-    let removeCoral = await TestModels.findOneAndUpdate(
-        remove_filter, {
-            coralStatus: "removed",
-            coralRemoveDate: format(new Date()),
-        });
+    let coral_user = "";
+    if (req_body.belong){
+        let removeCoral = await TestModels.findOneAndUpdate(
+            remove_filter, {
+                coralStatus: "removed",
+                coralRemoveDate: format(new Date()),
+                coralBelong: req_body.belong
+            });
+    }
+    else{
+        let removeCoral = await TestModels.findOneAndUpdate(
+            remove_filter, {
+                coralStatus: "removed",
+                coralRemoveDate: format(new Date()),
+            });
+    }
     // console.log(removeCoral);
     if (removeCoral){res.send("coral removed");}
     else{res.send("no coral removed");}
@@ -104,6 +114,7 @@ app.post('/image', async (req, res) => {
         }
         addImage.coralImageUrl.push("https://" + req_body.coralImageUrl);
         await addImage.save();
+        if (req_body.coralBelong){addImage.coralBelong = req_body.coralBelong;}
         res.send("coral image added");
     }
     else{res.send("coral image added failed");}
