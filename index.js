@@ -7,10 +7,7 @@ const app = express();
 
 const dbConnect = require("./db/dbConnection");
 const bodyParser = require('body-parser');
-const csv = require('csv-parser');
 const CryptoJS = require('crypto-js');
-const { join } = require('path');
-const { brotliCompress } = require('zlib');
 const encryption_key = "seamplecoraltech";
 
 dbConnect();
@@ -202,21 +199,6 @@ app.post('/login', async (req, res) => {
     } catch (error) {
         res.send(error);
     }
-    // fs.createReadStream('user_data.csv')
-    // .pipe(csv())
-    // .on('data', (row) => {
-    //     if (row.password === decryptedPassword) {
-    //         res.send({
-    //             user_name: row.username,
-    //             user_corals: row.corals,
-    //         });
-    //         found = true;
-    //         return () => {}
-    //     }
-    // })
-    // .on('end', () => {
-    //     if (!found){res.send({ error: 'Authentication failed' });}
-    // });
 });
 
 // app.get('/', async (req, res) => {
