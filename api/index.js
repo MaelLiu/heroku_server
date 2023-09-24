@@ -216,6 +216,9 @@ app.post('/login', async (req, res) => {
 //     res.send("added");
 
 // });
+app.get("/", (req, res) => {
+    console.log("this is server end");
+});
 
 app.listen(process.env.PORT || 3001, ()=>{
 // app.listen(3001, ()=>{
