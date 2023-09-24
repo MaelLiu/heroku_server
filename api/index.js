@@ -201,21 +201,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// app.get('/', async (req, res) => {
-//     let data = {
-//         coralLabel:2,
-//         coralType:"finger",
-//         coralPosition:"a5",
-//         coralPutDate:Date.now(),
-//         coralRecoveryDays:4,
-//         coralBelong:"owen",
-//         coralStatus:"inside",
-//     };
-//     let test = new TestModels(data);
-//     await test.save();
-//     res.send("added");
-
-// });
 app.get("/", (req, res) => {
     console.log("this is server end");
 });
