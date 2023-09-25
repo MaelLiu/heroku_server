@@ -64,7 +64,7 @@ app.post('/add', async (req, res) => {
     try {
         await addNewCoral.save();
         let report = `coral #: ${newCoralData.coralLabel}`;
-        res.send(report);
+        res.json(report);
         console.log(`coral #: ${newCoralData.coralLabel} is added`);   
         // console.log("add one coral in");
     } catch (error) {
