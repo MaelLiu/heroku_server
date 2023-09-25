@@ -81,6 +81,7 @@ app.post('/remove', async (req ,res) =>{
     remove_filter.coralStatus = "inside";
     let coral_user = "";
     if (req_body.belong){
+        console.log("new owner");
         let removeCoral = await TestModels.findOneAndUpdate(
             remove_filter, {
                 coralStatus: "removed",
