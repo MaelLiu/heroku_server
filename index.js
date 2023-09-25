@@ -40,7 +40,7 @@ app.get('/find', async (req, res) => {
     else{find_filter.coralStatus = "inside";}
     // console.log(find_filter);
     let finding = await TestModels.find(find_filter);
-    console.log(finding);
+    // console.log(finding);
     try {
         res.json(finding);
     } catch (error) {
