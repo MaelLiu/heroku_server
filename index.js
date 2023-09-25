@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs');
 const TestModels = require('./db/Test');
 const UserModels = require('./db/User');
 const cors = require('cors');
@@ -202,7 +201,7 @@ app.post('/login', async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    console.log("this is server end");
+    res.send("this is server end");
 });
 
 app.listen(process.env.PORT || 3001, ()=>{
