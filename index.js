@@ -76,8 +76,8 @@ app.post('/add', async (req, res) => {
 app.post('/remove', async (req ,res) =>{
     let req_query = req.query;
     let remove_filter = {};
-    if (req_query.pos != ""){remove_filter.coralPosition = req_query.pos;}
-    else{remove_filter.coralPosition = "notfound";}
+    if (req_query.label){remove_filter.coralLabel = Number(req_query.label);}
+    else{remove_filter.coralLabel = "notfound";}
     remove_filter.coralStatus = "inside";
     let coral_user = "";
     if (req_body.belong){
