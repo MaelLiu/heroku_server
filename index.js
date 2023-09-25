@@ -80,9 +80,10 @@ app.post('/remove', async (req ,res) =>{
     else{remove_filter.coralLabel = "notfound";}
     remove_filter.coralStatus = "inside";
     let coral_user = "";
+    let removeCoral;
     if (req_query.belong){
         console.log("new owner");
-        let removeCoral = await TestModels.findOneAndUpdate(
+        removeCoral = await TestModels.findOneAndUpdate(
             remove_filter, {
                 coralStatus: "removed",
                 coralRemoveDate: format(new Date()),
@@ -90,7 +91,7 @@ app.post('/remove', async (req ,res) =>{
             });
     }
     else{
-        let removeCoral = await TestModels.findOneAndUpdate(
+        removeCoral = await TestModels.findOneAndUpdate(
             remove_filter, {
                 coralStatus: "removed",
                 coralRemoveDate: format(new Date()),
