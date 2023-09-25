@@ -41,7 +41,6 @@ app.get('/find', async (req, res) => {
     // console.log(find_filter);
     let finding = await TestModels.find(find_filter);
     // console.log(finding);
-    //nothing
     try {
         res.json(finding);
     } catch (error) {
