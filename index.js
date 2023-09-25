@@ -86,7 +86,7 @@ app.post('/remove', async (req ,res) =>{
             remove_filter, {
                 coralStatus: "removed",
                 coralRemoveDate: format(new Date()),
-                coralBelong: req_body.belong
+                coralBelong: req_query.belong
             });
     }
     else{
