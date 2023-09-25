@@ -38,7 +38,7 @@ app.get('/find', async (req, res) => {
     if (req_query.showRemoved === "true"){find_filter.coralStatus = "removed";}
     else if (req_query.showRemoved === "all"){}
     else{find_filter.coralStatus = "inside";}
-    // console.log(find_filter);
+    console.log(find_filter);
     let finding = await TestModels.find(find_filter);
     try {
         res.json(finding);
